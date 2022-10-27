@@ -25,7 +25,12 @@ class Circle: public Shape
 {
 public:
 
-Circle(
+Circle();
+
+
+Circle(Point pt, int r, Color c){
+
+}
 
 
 
