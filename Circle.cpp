@@ -21,6 +21,15 @@ using namespace std;
 // TODO: implement two constructors, setCenter, getCenter, setColor, getColor,
 //       setRadius, getRadius, read, write.
 
+class Circle: public Shape
+{
+public:
+
+Circle(
+
+
+
+
 
 
 // Your code goes above this line.
