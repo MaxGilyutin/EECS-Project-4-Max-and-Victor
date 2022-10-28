@@ -114,7 +114,7 @@ Color Rectangle::getColorBottomLeft()
     return colorBottomLeft;
 }
 
-void Rectangle::setColorTopLeft(Color color)
+void Rectangle::setColorBottomRight(Color color)
 {
     colorBottomRight = color;
     return;
@@ -131,7 +131,7 @@ void Rectangle::read(istream& ins)
 
     ins >> start >> character >> end >> character >> 
         colorTopLeft >> character >> colorTopRight >> character
-        >> colorBottomRight >> character << colorBottomLeft;
+        >> colorBottomRight >> character >> colorBottomLeft;
         return;
 }
 
