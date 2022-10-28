@@ -23,6 +23,125 @@ using namespace std;
 //       getColorTopRight, setColorBottomRight, getColorBottomRight,
 //       setColorBottomLeft, getColorBottomLeft, read, write.
 
+Rectangle::Rectangle()
+{
+   
+}
+
+Rectangle::Rectangle(Point pt1, Point pt2, Color color)
+{
+    start = pt1;
+    end = pt2;
+    colorTopLeft = color;
+    colorTopRight = color;
+    colorBottomLeft = color;
+    colorBottomRight = color;
+
+}
+
+Rectangle::Rectangle(Point pt1, Point pt2, Color cTopLeft, Color cTopRight,
+    Color cBottomRight, Color cBottomLeft)
+{
+    start = pt1;
+    end = pt2;
+    colorTopLeft = cTopLeft;
+    colorTopRight = cTopRight;
+    colorBottomLeft = cBottomRight;
+    colorBottomRight = cBottomLeft;
+}
+
+void Rectangle::setStart(Point pt)
+{
+    start = pt;
+    return;
+}
+
+Point Rectangle::getStart()
+{
+    return start;
+}
+
+void Rectangle::setEnd(Point pt)
+{
+    end = pt;
+    return;
+}
+
+Point Rectangle::getEnd()
+{
+    return end;
+}
+
+void Rectangle::setColor(Color color)
+{
+    colorTopLeft = color;
+    colorTopRight = color;
+    colorBottomLeft = color;
+    colorBottomRight = color;
+    return;
+}
+
+void Rectangle::setColorTopLeft(Color color)
+{
+    colorTopLeft = color;
+    return;
+}
+
+Color Rectangle::getColorTopLeft()
+{
+    return colorTopLeft;
+}
+
+void Rectangle::setColorTopRight(Color color)
+{
+    colorTopRight = color;
+    return;
+}
+
+Color Rectangle::getColorTopRight()
+{
+    return colorTopRight;
+}
+
+void Rectangle::setColorBottomLeft(Color color)
+{
+    colorBottomLeft = color;
+    return;
+}
+
+Color Rectangle::getColorBottomLeft()
+{
+    return colorBottomLeft;
+}
+
+void Rectangle::setColorTopLeft(Color color)
+{
+    colorBottomRight = color;
+    return;
+}
+
+Color Rectangle::getColorBottomRight()
+{
+    return colorBottomRight;
+}
+
+void Rectangle::read(istream& ins)
+{
+    char character;
+
+    ins >> start >> character >> end >> character >> 
+        colorTopLeft >> character >> colorTopRight >> character
+        >> colorBottomRight >> character << colorBottomLeft;
+        return;
+}
+
+void Rectangle::write(ostream& outs)
+{
+    outs << start << " " << end << " "
+        << colorTopLeft << " " << colorTopRight << " "
+        << colorBottomRight << " " << colorBottomLeft;
+    return;
+}
 
 
 // Your code goes above this line.
