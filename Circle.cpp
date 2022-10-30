@@ -21,20 +21,54 @@ using namespace std;
 // TODO: implement two constructors, setCenter, getCenter, setColor, getColor,
 //       setRadius, getRadius, read, write.
 
-class Circle: public Shape
-{
-public:
-
-Circle();
-
-
-Circle(Point pt, int r, Color c){
+// TODO: implement two constructors, setCenter, getCenter, setColor, getColor,
+//       setRadius, getRadius, read, write.
+Circle::Circle(){
 
 }
 
+Circle::Circle(Point pt, int r, Color c){
+    center = pt;
+    radius = checkRadius(r);
+    color = c;
+    
+    
+}
 
+void Circle::setCenter(Point pt){
+    center = pt;
+}
 
+Point Circle::getCenter(){
+    return center;
+}
 
+void Circle::setRadius(int r){
+    radius = checkRadius(r);
+}
+
+int Circle::getRadius(){
+    return radius;
+}
+
+void Circle::setColor(Color c){
+    color = c;
+}
+
+Color Circle::getColor(){
+    return color;
+}
+
+void Circle::read(istream& ins){
+    char char1;
+    ins >> char1 >> center >> char1 >> radius >> color;
+    return;
+}
+
+void Circle::write(ostream& outs){
+    outs << "(," << center << ") " << radius << " " << color;
+    return;
+}
 
 
 // Your code goes above this line.
