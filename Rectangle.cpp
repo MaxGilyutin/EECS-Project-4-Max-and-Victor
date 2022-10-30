@@ -22,6 +22,7 @@ using namespace std;
 //       setColor, setColorTopLeft, getColorTopLeft, setColorTopRight,
 //       getColorTopRight, setColorBottomRight, getColorBottomRight,
 //       setColorBottomLeft, getColorBottomLeft, read, write.
+
 Rectangle::Rectangle()
 {
    
@@ -31,10 +32,7 @@ Rectangle::Rectangle(Point pt1, Point pt2, Color color)
 {
     start = pt1;
     end = pt2;
-    colorTopLeft = color;
-    colorTopRight = color;
-    colorBottomLeft = color;
-    colorBottomRight = color;
+    setColor(color);
 
 }
 
@@ -126,29 +124,20 @@ Color Rectangle::getColorBottomRight()
 
 void Rectangle::read(istream& ins)
 {
-    char character;
-    Color col;
 
-    ins >> character >> start >> character >> character >> end >> character >>
-            colorTopLeft >> colorTopRight >>
-            colorBottomRight >> colorBottomLeft;
-    
-    if (ins.fail()) {
-        ins.clear();
-        
-    ins >> character >> start >> character >> character >> end >> character >> col;
-        setColor(col);
-    }
+    ins >> start >> end >>  colorTopLeft >> colorTopRight >> 
+        colorBottomRight >> colorBottomLeft;
         return;
 }
 
 void Rectangle::write(ostream& outs)
 {
-    outs << "(" << start << ") " << "(" << end << ") "
+    outs << start << " " << end << " "
         << colorTopLeft << " " << colorTopRight << " "
         << colorBottomRight << " " << colorBottomLeft;
     return;
 }
+
 
 // Your code goes above this line.
 // Don't change the implementations below!
