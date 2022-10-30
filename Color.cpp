@@ -108,9 +108,9 @@ int Color::getBlue()
 void Color::read(istream& ins)
 {
 	ins >> red >> green >> blue;
-	checkRange(red);
-	checkRange(green);
-	checkRange(blue);
+	red = checkRange(red);
+	green = checkRange(green);
+	blue = checkRange(blue);
 }
 
 void Color::write(ostream& outs)
