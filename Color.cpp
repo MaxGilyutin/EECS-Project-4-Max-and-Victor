@@ -44,6 +44,52 @@ void Color::setGreen(int greenVal)
 	green = checkRange(greenVal);
 }
 
+/**
+ * Color.cpp
+ * Project UID 2e6ea4e086ea6a06753e819c30923369
+ *
+ * EECS 183
+ * Project 4: CoolPics
+ *
+ * <#Name(s)#>
+ * <#uniqname(s)#>
+ *
+ * <#Description#>
+ */
+
+#include "Color.h"
+
+// TODO: implement first checkRange, then two constructors, setRed, getRed,
+//       setGreen, getGreen, setBlue, getBlue, read, write.
+Color::Color()
+{
+	red = 0;
+	green = 0;
+	blue = 0;
+}
+
+Color::Color(int redVal, int greenVal, int blueVal)
+{
+	red = checkRange(redVal);
+	green = checkRange(greenVal);
+	blue = checkRange(blueVal);
+}
+
+void Color::setRed(int redVal)
+{
+	red = checkRange(redVal);
+}
+
+int Color::getRed()
+{
+	return red;
+}
+
+void Color::setGreen(int greenVal)
+{
+	green = checkRange(greenVal);
+}
+
 int Color::getGreen()
 {
 	return green;
@@ -62,11 +108,14 @@ int Color::getBlue()
 void Color::read(istream& ins)
 {
 	ins >> red >> green >> blue;
+	checkRange(red);
+	checkRange(green);
+	checkRange(blue);
 }
 
 void Color::write(ostream& outs)
 {
-	outs << red << " " << green << " " << blue;
+	outs << checkRange(red) << " " << checkRange(green) << " " << checkRange(blue);
 }
 
 int Color::checkRange(int val)
