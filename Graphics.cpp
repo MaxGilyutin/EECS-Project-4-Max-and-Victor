@@ -23,6 +23,44 @@
 using namespace std;
 
 // TODO: implement constructor, clear, setPixel, initArray.
+Graphics::Graphics()
+{
+    for (int i = 0; i < DIMENSION - 1; i++)
+    {
+        for (int z = 0; z < DIMENSION - 1; z++)
+        {
+            pixelData[i][z].setRed(0);
+            pixelData[i][z].setGreen(0);
+            pixelData[i][z].setBlue(0);
+        }
+    }
+}
+
+void Graphics::clear()
+{
+    initArray();
+}
+
+void Graphics::initArray()
+{
+    for (int i = 0; i < DIMENSION - 1; i++)
+    {
+        for (int z = 0; z < DIMENSION - 1; z++)
+        {
+            pixelData[i][z].setRed(0);
+            pixelData[i][z].setGreen(0);
+            pixelData[i][z].setBlue(0);
+        }
+    }
+}
+
+void Graphics::setPixel(int x, int y, Color color)
+{
+    pixelData[x][y].setRed(color.getRed());
+    pixelData[x][y].setGreen(color.getGreen());
+    pixelData[x][y].setBlue(color.getBlue());
+}
+
 
 
 
