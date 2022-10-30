@@ -131,25 +131,62 @@ void coolPics()
     return;
 }
 
-void writeFile(const Graphics& drawer)
-{
-    // TODO: implement
-    // This will make use of Graphics::writeFile()
-}
-
 void loadFile(Graphics& drawer)
 {
     // TODO: implement
+    ifstream ins;
+    char shape;
+    
+    openFile(ins);
+
+    drawer.clear();
+
+    while (ins >> shape)
+    {
+        if (shape == 'R')
+        {
+            Rectangle rect;
+            rect.draw(drawer);
+        }
+        else if (shape == 'L')
+        {
+            Line line;
+            line.draw(drawer);
+        }
+        else if (shape == 'C')
+        {
+            Circle circ;
+            circ.draw(drawer);
+        }
+        else if (shape == 'T')
+        {
+            Triangle tri;
+            tri.draw(drawer);
+        }
+        else
+        {
+            string str;
+            ins >> str;
+            cout << "Error in input file: " << shape
+                 << str << endl;
+        }
+
+        ins.ignore(10,'\n');
+    }
 }
 
 string tolower(string str)
 {
     // TODO: implement
-
+    for (int i = 0; i < str.length() - 1; i++)
+    {
+        if (str[i] < 'Z')
+        {
+            str[i] += 32;
+        }
+    }
     return str;
 }
-
-
 // Don't change the implementations below!
 
 void printMenu()
