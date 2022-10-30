@@ -22,7 +22,7 @@ Line::Line(){
 }
 
 Line::Line(Point pt1, Point pt2, Color color){
-    color = color;
+    lineColor = color;
     start = pt1;
     end = pt2;
 }
@@ -42,6 +42,27 @@ void Line::setEnd(Point pt){
 Point Line::getEnd(){
     return end;
 }
+
+void Line::setColor(Color color){
+    lineColor = color;
+}
+
+Color Line::getColor(){
+    return lineColor;
+}
+
+void Line::read(istream& ins){
+    char char1;
+    ins >> char1 >> start >> char1 >> char1 >> end >> char1 >> lineColor;
+    return;
+}
+
+void Line::write(ostream& outs){
+    outs << "(" << start << ") " << "(" << end << ") " << lineColor;
+    return;
+}
+
+
 
 // Your code goes above this line.
 // Don't change the implementations below!
