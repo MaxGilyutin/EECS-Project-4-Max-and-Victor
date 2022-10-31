@@ -197,3 +197,4 @@ void Rectangle::draw(Graphics & drawer)
     left.draw(drawer);
     right.draw(drawer);
 }
+ 
