@@ -1,3 +1,4 @@
+
 /**
  * pics.cpp
  * Project UID 2e6ea4e086ea6a06753e819c30923369
@@ -74,7 +75,7 @@ string tolower(string str);
  *            << [all chars remaining on the line] << endl;
  *        Draw shape on canvas
  *     Close file
- *     Print "[Loaded <filename>]", where <filename> is replaced with 
+ *     Print "[Loaded <filename>]", where <filename> is replaced with
  *                                  the name of the file.
  */
 void loadFile(Graphics& drawer);
