@@ -20,9 +20,6 @@ using namespace std;
 
 // TODO: implement two constructors, setCenter, getCenter, setColor, getColor,
 //       setRadius, getRadius, read, write.
-
-// TODO: implement two constructors, setCenter, getCenter, setColor, getColor,
-//       setRadius, getRadius, read, write.
 Circle::Circle(){
 
 }
@@ -60,13 +57,14 @@ Color Circle::getColor(){
 }
 
 void Circle::read(istream& ins){
-    char char1;
-    ins >> char1 >> center >> char1 >> radius >> color;
+
+    ins >> center >> radius >> color;
+    radius = checkRadius(radius);
     return;
 }
 
 void Circle::write(ostream& outs){
-    outs << "(," << center << ") " << radius << " " << color;
+    outs << center << radius << color;
     return;
 }
 
