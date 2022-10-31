@@ -124,17 +124,25 @@ Color Rectangle::getColorBottomRight()
 
 void Rectangle::read(istream& ins)
 {
+    Color col;
+   
+    ins >> start >> end >> colorTopLeft >> colorTopRight
+        >> colorBottomRight >> colorBottomLeft;
 
-    ins >> start >> end >>  colorTopLeft >> colorTopRight >> 
-        colorBottomRight >> colorBottomLeft;
+    if (ins.fail()) {
+        ins.clear();
+        
+    ins >> start >> end >> col;
+        setColor(col);
+        
+    }
         return;
 }
 
 void Rectangle::write(ostream& outs)
 {
-    outs << start << " " << end << " "
-        << colorTopLeft << " " << colorTopRight << " "
-        << colorBottomRight << " " << colorBottomLeft;
+    outs << start << end << colorTopLeft << " " << colorTopRight << " "
+    << colorBottomRight << " " << colorBottomLeft;
     return;
 }
 
