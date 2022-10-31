@@ -52,13 +52,12 @@ Color Line::getColor(){
 }
 
 void Line::read(istream& ins){
-    char char1;
-    ins >> char1 >> start >> char1 >> char1 >> end >> char1 >> lineColor;
+    ins >> start >> end >> lineColor;
     return;
 }
 
 void Line::write(ostream& outs){
-    outs << "(" << start << ") " << "(" << end << ") " << lineColor;
+    outs << start << end << lineColor;
     return;
 }
 
@@ -245,3 +244,4 @@ void Line::draw(Graphics &drawer)
         }
     }
 }
+
