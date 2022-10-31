@@ -56,13 +56,11 @@ void Graphics::initArray()
 
 void Graphics::setPixel(int x, int y, Color color)
 {
-    if (x < DIMENSION - 1 && y < DIMENSION - 1)
-    {
-        pixelData[x][y].setRed(color.getRed());
-        pixelData[x][y].setGreen(color.getGreen());
-        pixelData[x][y].setBlue(color.getBlue());
+    if (x >= 0 && y >= 0 && x < DIMENSION && y < DIMENSION){
+    pixelData[y][x] = color;
     }
 }
+
 
 
 
