@@ -16,6 +16,14 @@
 #include "Shape.h"
 #include <cmath>
 using namespace std;
+
+// TODO: implement three constructors, setColor, setVertexOne, getVertexOne,
+//       setVertexTwo, getVertexTwo, setVertexThree, getVertexThree,
+//       setVertexOneColor, getVertexOneColor, setVertexTwoColor,
+//       getVertexTwoColor, setVertexThreeColor, getVertexThreeColor,
+//       read, write.
+
+
 Triangle::Triangle(){
     
 }
@@ -95,26 +103,27 @@ Color Triangle::getVertexThreeColor(){
 }
 
 void Triangle::read(istream& ins){
-    char char1;
+
     Color col;
     
-    ins >> char1 >> vertexOne >> char1 >> vertexOneColor >> char1 >> vertexTwo >>
-    char1 >> vertexTwoColor >> char1 >> vertexThree >> char1 >> vertexThreeColor;
+    ins >> vertexOne >> vertexOneColor >> vertexTwo >>
+    vertexTwoColor >> vertexThree >> vertexThreeColor;
+
     
     if (ins.fail()) {
         ins.clear();
         
-        ins >> char1 >> vertexOne >> char1 >> char1 >> vertexTwo >> char1
-        >> char1 >> vertexThree >> char1 >> col;
-
+    ins >> vertexOne >> vertexTwo >> vertexThree >> col;
+    setColor(col);
+        
     }
 
     return;
 }
 
 void Triangle::write(ostream& outs){
-    outs << "(" << vertexOne << ") " << vertexOneColor << "(" << vertexTwo <<
-    ") " << vertexTwoColor << "(" << vertexThree << ") " << vertexThreeColor;
+    outs << vertexOne << " " << vertexOneColor << " " << vertexTwo << " " <<
+    vertexTwoColor << " " << vertexThree << " "<< vertexThreeColor;
     return;
 }
 
