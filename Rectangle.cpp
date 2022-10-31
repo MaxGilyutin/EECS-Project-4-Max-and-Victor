@@ -25,7 +25,7 @@ using namespace std;
 
 Rectangle::Rectangle()
 {
-   
+
 }
 
 Rectangle::Rectangle(Point pt1, Point pt2, Color color)
@@ -43,8 +43,8 @@ Rectangle::Rectangle(Point pt1, Point pt2, Color cTopLeft, Color cTopRight,
     end = pt2;
     colorTopLeft = cTopLeft;
     colorTopRight = cTopRight;
-    colorBottomLeft = cBottomRight;
-    colorBottomRight = cBottomLeft;
+    colorBottomLeft = cBottomLeft;
+    colorBottomRight = cBottomRight;
 }
 
 void Rectangle::setStart(Point pt)
@@ -125,24 +125,25 @@ Color Rectangle::getColorBottomRight()
 void Rectangle::read(istream& ins)
 {
     Color col;
-   
+
     ins >> start >> end >> colorTopLeft >> colorTopRight
         >> colorBottomRight >> colorBottomLeft;
 
     if (ins.fail()) {
         ins.clear();
-        
-    ins >> start >> end >> col;
+
+        ins >> start >> end >> col;
         setColor(col);
-        
+
+
     }
-        return;
+    return;
 }
 
 void Rectangle::write(ostream& outs)
 {
-    outs << start << end << colorTopLeft << " " << colorTopRight << " "
-    << colorBottomRight << " " << colorBottomLeft;
+    outs << start << " " << end << " " << colorTopLeft << " " << colorTopRight << " "
+        << colorBottomRight << " " << colorBottomLeft;
     return;
 }
 
@@ -162,7 +163,7 @@ ostream& operator << (ostream& outs, Rectangle rectangle)
     return outs;
 }
 
-void Rectangle::draw(Graphics & drawer)
+void Rectangle::draw(Graphics& drawer)
 {
     // four points of rectangles
     Point topLeft = start;
@@ -172,29 +173,28 @@ void Rectangle::draw(Graphics & drawer)
 
     // center point and color by averaging
     Point center((start.getX() + end.getX()) / 2,
-                 (start.getY() + end.getY()) / 2);
+        (start.getY() + end.getY()) / 2);
     Color colorCenter((colorTopLeft.getRed() + colorTopRight.getRed() +
-                       colorBottomRight.getRed() +
-                       colorBottomLeft.getRed()) / 4,
-                      (colorTopLeft.getGreen() + colorTopRight.getGreen() +
-                       colorBottomRight.getGreen() +
-                       colorBottomLeft.getGreen()) / 4,
-                      (colorTopLeft.getBlue() + colorTopRight.getBlue() +
-                       colorBottomRight.getBlue() +
-                       colorBottomLeft.getBlue()) / 4);
+        colorBottomRight.getRed() +
+        colorBottomLeft.getRed()) / 4,
+        (colorTopLeft.getGreen() + colorTopRight.getGreen() +
+            colorBottomRight.getGreen() +
+            colorBottomLeft.getGreen()) / 4,
+        (colorTopLeft.getBlue() + colorTopRight.getBlue() +
+            colorBottomRight.getBlue() +
+            colorBottomLeft.getBlue()) / 4);
 
     // four triangles to represent rectangle
     Triangle top(topLeft, colorTopLeft, topRight, colorTopRight,
-                 center, colorCenter);
+        center, colorCenter);
     Triangle bottom(bottomLeft, colorBottomLeft, bottomRight, colorBottomRight,
-                    center, colorCenter);
+        center, colorCenter);
     Triangle left(topLeft, colorTopLeft, bottomLeft, colorBottomLeft,
-                  center, colorCenter);
+        center, colorCenter);
     Triangle right(topRight, colorTopRight, bottomRight, colorBottomRight,
-                   center, colorCenter);
+        center, colorCenter);
     top.draw(drawer);
     bottom.draw(drawer);
     left.draw(drawer);
     right.draw(drawer);
 }
- 
