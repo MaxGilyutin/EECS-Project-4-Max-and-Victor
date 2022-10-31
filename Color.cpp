@@ -1,5 +1,5 @@
 /**
- * Color.cpp
+ * Circle.cpp
  * Project UID 2e6ea4e086ea6a06753e819c30923369
  *
  * EECS 183
@@ -11,93 +11,132 @@
  * <#Description#>
  */
 
-#include "Color.h"
+#include "Circle.h"
+#include "Line.h"
+#include "Graphics.h"
+#include "utility.h"
+#include <algorithm>
+using namespace std;
 
-// TODO: implement first checkRange, then two constructors, setRed, getRed,
-//       setGreen, getGreen, setBlue, getBlue, read, write.
-Color::Color()
-{
-    red = 0;
-    green = 0;
-    blue = 0;
+// TODO: implement two constructors, setCenter, getCenter, setColor, getColor,
+//       setRadius, getRadius, read, write.
+Circle::Circle(){
+
 }
 
-Color::Color(int redVal, int greenVal, int blueVal)
-{
-    red = checkRange(redVal);
-    green = checkRange(greenVal);
-    blue = checkRange(blueVal);
+Circle::Circle(Point pt, int r, Color c){
+    center = pt;
+    radius = checkRadius(r);
+    color = c;
+    
+    
 }
 
-void Color::setRed(int redVal)
-{
-    red = checkRange(redVal);
+void Circle::setCenter(Point pt){
+    center = pt;
 }
 
-int Color::getRed()
-{
-    return red;
+Point Circle::getCenter(){
+    return center;
 }
 
-void Color::setGreen(int greenVal)
-{
-    green = checkRange(greenVal);
+void Circle::setRadius(int r){
+    radius = checkRadius(r);
 }
 
-int Color::getGreen()
-{
-    return green;
+int Circle::getRadius(){
+    return radius;
 }
 
-void Color::setBlue(int blueVal)
-{
-    blue = checkRange(blueVal);
+void Circle::setColor(Color c){
+    color = c;
 }
 
-int Color::getBlue()
-{
-    return blue;
+Color Circle::getColor(){
+    return color;
 }
 
-void Color::read(istream& ins)
-{
-    ins >> red >> green >> blue;
-    red = checkRange(red);
-    green = checkRange(green);
-    blue = checkRange(blue);
+void Circle::read(istream& ins){
+
+    ins >> center >> radius >> color;
+    radius = checkRadius(radius);
+    return;
 }
 
-void Color::write(ostream& outs)
-{
-    outs << checkRange(red) << " " << checkRange(green) << " " << checkRange(blue);
-}
-
-int Color::checkRange(int val)
-{
-    if (val >= 0 && val <= 255) {
-        return val;
-    }
-    else if (val < 0) {
-        return 0;
-    }
-    else
-    {
-        return 255;
-    }
+void Circle::write(ostream& outs){
+    outs << center << radius << color;
+    return;
 }
 
 
 // Your code goes above this line.
 // Don't change the implementations below!
 
-istream& operator >> (istream& ins, Color& color)
+istream& operator >> (istream& ins, Circle& circle)
 {
-   color.read(ins);
-   return ins;
+    circle.read(ins);
+    return ins;
 }
 
-ostream& operator << (ostream& outs, Color color)
+ostream& operator << (ostream& outs, Circle circle)
 {
-   color.write(outs);
-   return outs;
+    circle.write(outs);
+    return outs;
+}
+
+void Circle::draw(Graphics & drawer)
+{
+    int radius = min(getRadius(), (int)DIMENSION);
+    int error = -radius;
+    int x = radius;
+    int y = 0;
+    Color c = getColor();
+
+    while (x >= y)
+    {
+        plot8points(x, y, c, drawer);
+
+        error += y;
+        ++y;
+        error += y;
+
+        if (error >= 0)
+        {
+            error -= x;
+            --x;
+            error -= x;
+        }
+    }
+}
+
+int Circle::checkRadius(int radius)
+{
+    if (radius < 0)
+    {
+        return -1 * radius;
+    }
+    return radius;
+}
+
+void Circle::plot8points(int x, int y, Color c, Graphics& drawer)
+{
+    plot4points(x, y, c, drawer);
+    if (x != y) plot4points(y, x, c, drawer);
+}
+
+void Circle::plot4points(int x, int y, Color c, Graphics& drawer)
+{
+    // cx and cy denote the offset of the circle center from the origin.
+    int cx = getCenter().getX();
+    int cy = getCenter().getY();
+
+    Point pt1Start(cx - x, cy + y);
+    Point pt1End(cx + x, cy + y);
+    Line line1(pt1Start, pt1End, c);
+    line1.draw(drawer);
+
+    Point pt2Start(cx - x, cy - y);
+    Point pt2End(cx + x, cy - y);
+    Line line2(pt2Start, pt2End, c);
+    line2.draw(drawer);
 }
