@@ -128,8 +128,19 @@ void coolPics()
     }
 
     printCloser();
-    
+
     return;
+}
+
+void writeFile(const Graphics& drawer)
+{
+    string filename;
+    cin >> filename;
+
+    filename = filename + ".bmp";
+
+    drawer.writeFile(filename);
+    cout << "[ Wrote" << filename << "]";
 }
 
 void loadFile(Graphics& drawer)
@@ -137,7 +148,7 @@ void loadFile(Graphics& drawer)
     // TODO: implement
     ifstream ins;
     char shape;
-    
+
     openFile(ins);
 
     drawer.clear();
@@ -169,49 +180,50 @@ void loadFile(Graphics& drawer)
             string str;
             ins >> str;
             cout << "Error in input file: " << shape
-                 << str << endl;
+                << str << endl;
         }
 
-        ins.ignore(10,'\n');
+        ins.ignore(10, '\n');
     }
 }
+
+
 
 string tolower(string str)
 {
     // TODO: implement
-    for (int i = 0; i < str.length() - 1; i++)
+    for (int i = 0; i < str.length(); i++)
     {
-        if (str[i] < 'Z')
-        {
-            str[i] += 32;
-        }
+        str[i] = tolower(str[i]);
     }
     return str;
 }
+
+
 // Don't change the implementations below!
 
 void printMenu()
 {
     cout << "Command:            Description:" << endl
-         << "--------            ------------" << endl
-         << "load filename       Loads data from a txt file" << endl
-         << "write filename      Creates a bmp image from data" << endl
-         << "quit                Quits the program" << endl << endl;
+        << "--------            ------------" << endl
+        << "load filename       Loads data from a txt file" << endl
+        << "write filename      Creates a bmp image from data" << endl
+        << "quit                Quits the program" << endl << endl;
 }
 
 
 void printOpener()
 {
     cout << "=================================================" << endl
-         << "               Welcome to CoolPics" << endl
-         << "=================================================" << endl << endl;
+        << "               Welcome to CoolPics" << endl
+        << "=================================================" << endl << endl;
 }
 
 void printCloser()
 {
     cout << "=================================================" << endl
-         << "            Thanks for using CoolPics!" << endl
-         << "=================================================" << endl;
+        << "            Thanks for using CoolPics!" << endl
+        << "=================================================" << endl;
 }
 
 string openFile(ifstream& ins)
@@ -234,7 +246,7 @@ string openFile(ifstream& ins)
     while (ins.fail())
     {
         cout << "Error in opening " << fileName
-             << ". Enter another file name: ";
+            << ". Enter another file name: ";
         ins.clear();
         cin >> fileName;
         fileName = fileName + ".txt";
