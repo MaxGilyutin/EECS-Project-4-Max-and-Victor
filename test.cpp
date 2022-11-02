@@ -121,6 +121,12 @@ void test_Line() {
     l.setEnd(c);
     cout << "Expected End (7,6), actual " << l.getEnd() << endl;
 
+    ofstream file;
+
+    file.open("data1");
+
+    file << l.getStart() << l.getEnd() << l.getColor();
+        
 }
 
 void test_Rectangle() {
@@ -193,5 +199,11 @@ void test_Triangle() {
     cout << "Expected value for VertexOne (42, 80), actual: " << t1.getVertexTwo() << endl;
     cout << "Expected value for VertexOne (36, 92), actual: " << t1.getVertexThree() << endl;
 
-}
+    ofstream file;
 
+    file.open("data1");
+
+    file << t1.getVertexOne() << t1.getVertexOneColor() << t1.getVertexTwo()
+        << t2.getVertexTwoColor() << t1.getVertexThree() << t1.getVertexThreeColor();
+
+}
