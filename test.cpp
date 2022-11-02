@@ -70,15 +70,19 @@ void test_Point() {
 
 void test_Circle() {
     
+    int r = 4;
+    int t = 27;
     Point z(9, 8);
     Point a(2, 3);
     Color x(255, 0, 0);
     Color y(0, 0, 255);
-    Circle c1(z, 4, x);
+    Circle c1(z, r, x);
+    Circle c2;
 
     cout << "Expected Center (9,8), actual " << c1.getCenter() << endl;
     cout << "Expected Radius 4, actual " << c1.getRadius() << endl;
     cout << "Expected color 255, 0, 0, actual " << c1.getColor() << endl;
+
     
     c1.setCenter(a);
     cout << "Expected Center (2,3), actual " << c1.getCenter() << endl;
@@ -86,8 +90,17 @@ void test_Circle() {
     c1.setColor(y);
     cout << "Expected color 0, 0, 255, actual " << c1.getColor() << endl;
     
-    c1.setRadius(27);
+    c1.setRadius(t);
     cout << "Expected Radius 27, actual " << c1.getRadius() << endl;
+
+    c2.setCenter(a);
+    cout << "Expected Center (2,3), actual " << c2.getCenter() << endl;
+
+    c2.setColor(y);
+    cout << "Expected color 0, 0, 255, actual " << c2.getColor() << endl;
+
+    c2.setRadius(t);
+    cout << "Expected Radius 27, actual " << c2.getRadius() << endl;
 }
 
 void test_Color() {
@@ -147,12 +160,12 @@ void test_Rectangle() {
     cout << "Expected End (88,72), actual " << r2.getEnd() << endl;
     cout << "Expected color 255, 0, 0, actual " << r1.getColorTopLeft() << endl;
     cout << "Expected color 255, 0, 0, actual " << r1.getColorTopRight() << endl;
-    cout << "Expected color 255, 0, 0, actual " << r1.getColorBottomLeft() << endl;
     cout << "Expected color 255, 0, 0, actual " << r1.getColorBottomRight() << endl;
+    cout << "Expected color 255, 0, 0, actual " << r1.getColorBottomLeft() << endl;
     cout << "Expected color 255, 0, 0, actual " << r2.getColorTopLeft() << endl;
     cout << "Expected color 0, 255, 0, actual " << r2.getColorTopRight() << endl;
-    cout << "Expected color 0, 0, 255, actual " << r2.getColorBottomLeft() << endl;
-    cout << "Expected color 37, 45, 0, actual " << r2.getColorBottomRight() << endl;
+    cout << "Expected color 0, 0, 255, actual " << r2.getColorBottomRight() << endl;
+    cout << "Expected color 37, 45, 0, actual " << r2.getColorBottomLeft() << endl;
 
     r1.setColor(d);
     cout << "Expected color 37, 45, 0, actual " << r1.getColorTopLeft() << endl;
@@ -207,3 +220,4 @@ void test_Triangle() {
         << t2.getVertexTwoColor() << t1.getVertexThree() << t1.getVertexThreeColor();
 
 }
+
