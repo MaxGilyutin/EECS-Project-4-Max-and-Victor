@@ -87,7 +87,7 @@ void test_Circle() {
     cout << "Expected color 0, 0, 255, actual " << c1.getColor() << endl;
     
     c1.setRadius(27);
-    cout << "Expected Radius 4, actual " << c1.getRadius() << endl;
+    cout << "Expected Radius 27, actual " << c1.getRadius() << endl;
 }
 
 void test_Color() {
